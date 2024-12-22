@@ -1,0 +1,117 @@
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+  
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+  
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1em 2rem;
+    display: grid;
+    grid-template-areas: 
+        "header"
+        "main"
+        "footer";
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+.header {
+    text-align: center;
+    grid-area: header;
+}
+
+.main {
+    grid-area: main;
+}
+
+.notes__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.notes__item {
+    display: flex;
+    flex-direction: column;
+    background-color: #1a1a1a;
+    border-radius: 5px;
+    padding: 1rem;
+    width: 300px;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+.notes__body {
+    flex-grow: 1;
+}
+
+.notes__action {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.notes__delete, .notes__archive {
+    /* background-color: transparent; */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #f9f9f9;
+    padding: .5em 1em;
+    display: flex;
+    gap: .3em;
+    align-items: center;
+}
+
+.notes__delete {
+    background-color: #f14158;
+}
+
+.notes__archive {
+    background-color: #30a46c;
+}
+
+.notes__createdAt {
+    font-size: .9rem;
+    margin-bottom: .5rem;
+    color: #a1a1a1;
+}
+
+.footer {
+    text-align: center;
+    grid-area: footer;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+      color: #213547;
+      background-color: #ffffff;
+    }
+
+    .notes__item {
+      background-color: #f7f7f7;
+      box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);;
+    }
+    a:hover {
+      color: #747bff;
+    }
+    button {
+      background-color: #f9f9f9;
+    }
+  }
