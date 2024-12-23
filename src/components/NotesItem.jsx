@@ -1,33 +1,24 @@
-import PropType from 'prop-types';
-
-function NotesItem({ title, body, createdAt }) {
+import PropTypes from 'prop-types';
+import CustomButton from './CustomButton';
+import { showFormattedDate } from '../utils/data'
+function NotesItem({ note, onDelete, onArchive }) {
     return (
         <div className="notes__item">
-            <h3 className="notes__title">{title}</h3>
-            <p className="notes__createdAt">{createdAt}</p>
-            <p className="notes__body">{body}</p>
+            <h3 className="notes__title">{note.title}</h3>
+            <p className="notes__createdAt">{showFormattedDate(note.createdAt)}</p>
+            <p className="notes__body">{note.body}</p>
             <div className='notes__action'>
-                <button className='notes__delete'>
-                    <span className="material-symbols-outlined">
-                        delete
-                    </span>
-                    <span>Delete</span>
-                </button>
-                <button className='notes__archive'>
-                    <span className="material-symbols-outlined">
-                        archive
-                    </span>
-                    <span>Archive</span>
-                </button>
+                <CustomButton id={note.id} type={note.archived ? 'unarchive' : 'archive'} onClickHandler={onArchive} />
+                <CustomButton id={note.id} type='delete' onClickHandler={onDelete} />
             </div>
         </div>
     );
 }
 
 NotesItem.propTypes = {
-    title: PropType.string.isRequired,
-    body: PropType.string.isRequired,
-    createdAt: PropType.string.isRequired
+    note: PropTypes.object.isRequired,
+    onDelete: PropTypes.func.isRequired,
+    onArchive: PropTypes.func.isRequired
 }
 
 export default NotesItem

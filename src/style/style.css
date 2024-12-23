@@ -35,12 +35,44 @@
     grid-area: main;
 }
 
+.new__notes__form, .notes__search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    margin: 0 auto;
+    max-width: 1024px;
+}
+
+.new__notes__form span {
+    font-size: .8rem;
+    text-align: right;
+    color: #a1a1a1;
+    font-style: italic;
+}
+
+.new__notes__form input,
+.new__notes__form textarea,
+.notes__search input {
+    padding: .5rem 1rem;
+    border: transparent;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
 .notes__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.notes__list-active, .notes__list-archive {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
-    margin: 2rem 0;
 }
 
 .notes__item {
@@ -53,6 +85,10 @@
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
 }
 
+.notes__title {
+    font-size: 1.2rem;
+}
+
 .notes__body {
     flex-grow: 1;
 }
@@ -63,9 +99,11 @@
     margin-top: 1rem;
 }
 
-.notes__delete, .notes__archive {
-    /* background-color: transparent; */
-    border: none;
+.notes__delete,
+.notes__archive,
+.notes__unarchive,
+.new__notes__form button {
+    border: 1px solid transparent;
     border-radius: 8px;
     cursor: pointer;
     color: #f9f9f9;
@@ -73,6 +111,19 @@
     display: flex;
     gap: .3em;
     align-items: center;
+    transition: all .1s ease-in-out;
+}
+
+.new__notes__form button {
+    justify-content: center;
+    background-color: #646cff;
+}
+
+.new__notes__form button:hover {
+    background-color: transparent;
+    border-color: #646cff;
+    color: #646cff;
+    box-shadow: 0 0px 6px #646cff;
 }
 
 .notes__delete {
@@ -80,7 +131,32 @@
 }
 
 .notes__archive {
+    background-color: #da8b17;
+}
+
+.notes__unarchive {
     background-color: #30a46c;
+}
+
+.notes__delete:hover {
+    background-color: transparent;
+    border-color: #f14158;
+    color: #f14158;
+    box-shadow: 0 0px 6px #f14158;
+}
+
+.notes__unarchive:hover {
+    background-color: transparent;
+    border-color: #30a46c;
+    color: #30a46c;
+    box-shadow: 0 0px 6px #30a46c;
+}
+
+.notes__archive:hover {
+    background-color: transparent;
+    border-color: #da8b17;
+    color: #da8b17;
+    box-shadow: 0 0px 6px #da8b17;
 }
 
 .notes__createdAt {

@@ -1,5 +1,5 @@
 import React from "react";
-import PropType from 'prop-types';
+import PropTypes from 'prop-types';
 
 class NewNoteForm extends React.Component {
     constructor(props) {
@@ -7,26 +7,35 @@ class NewNoteForm extends React.Component {
         this.state = {
             title: "",
             body: "",
+            maxLength: 50
         };
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.addNotes(this.state);
+        this.setState({ title: "", body: "" });
+    };
+
     render() {
         return (
-            <form onSubmit={this.props.onSubmit}>
+            <form onSubmit={this.handleSubmit} className="new__notes__form">
+                <span>Sisa karakter : {this.state.maxLength - this.state.title.length}</span>
                 <input
                     type="text"
                     name="title"
                     placeholder="Title"
                     value={this.state.title}
-                    onChange={(e) => this.setState({ title: e.target.value })}
+                    onChange={(e) => this.setState({ title: e.target.value.slice(0, this.state.maxLength) })}
+                    required
                 />
-                <input
-                    type="text"
+                <textarea
                     name="body"
                     placeholder="Body"
                     value={this.state.body}
                     onChange={(e) => this.setState({ body: e.target.value })}
-                />
+                    required>
+                </textarea>
                 <button type="submit">Submit</button>
             </form>
         );
@@ -34,7 +43,7 @@ class NewNoteForm extends React.Component {
 }
 
 NewNoteForm.propTypes = {
-    onSubmit: PropType.func.isRequired
+    addNotes: PropTypes.func.isRequired
 }
 
 export default NewNoteForm;
